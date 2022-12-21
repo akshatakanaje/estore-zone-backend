@@ -2,8 +2,15 @@ package com.simplilearn.estorezone.admin.model;
 
 import java.util.Date;
 
+/**
+ * Admin Model
+ * @author Akshata
+ *
+ */
+
 public class Admins {
 	
+	//admins model attributes
 	private int adminId;
 	private String email;
 	private String password;
