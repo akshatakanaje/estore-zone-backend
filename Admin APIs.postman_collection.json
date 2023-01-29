@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "9bbf9e4f-eed3-453a-8db3-4e82e5a120d7",
+		"name": "Admin APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Admin list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estore-zone-backend/admins?adminId=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estore-zone-backend",
+						"admins"
+					],
+					"query": [
+						{
+							"key": "adminId",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estore-zone-backend/admins?email=admin06@gmail.com&password=admin@156&fullName=Administrator&loginType=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estore-zone-backend",
+						"admins"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "admin06@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "admin@156"
+						},
+						{
+							"key": "fullName",
+							"value": "Administrator"
+						},
+						{
+							"key": "loginType",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Admin",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estore-zone-backend/admins?email=admin07@gmail.com&password=admin@012&fullName=Admin&loginType=2&adminId=7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estore-zone-backend",
+						"admins"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "admin07@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "admin@012"
+						},
+						{
+							"key": "fullName",
+							"value": "Admin"
+						},
+						{
+							"key": "loginType",
+							"value": "2"
+						},
+						{
+							"key": "adminId",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Admin",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estore-zone-backend/admins?adminId=7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estore-zone-backend",
+						"admins"
+					],
+					"query": [
+						{
+							"key": "adminId",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

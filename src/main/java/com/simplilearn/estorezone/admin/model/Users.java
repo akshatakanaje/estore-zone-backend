@@ -7,12 +7,12 @@ import java.util.Date;
  * @author Akshata
  *
  */
-public class User {
+public class Users {
 	
 	//user model attributes
 	private int userId;
 	private String email;
-	private String passsword;
+	private String password;
 	private String fullName;
 	private String street;
 	private String city;
@@ -24,17 +24,17 @@ public class User {
 	private Date addedOn;
 	
 	//default constructor
-	public User() {
+	public Users() {
 		
 	}
     
 	//parameterized constructor
-	public User(int userId, String email, String passsword, String fullName, String street, String city, String state,
+	public Users(int userId, String email, String password, String fullName, String street, String city, String state,
 			String country, int pincode, String image, Long contact, Date addedOn) {
 		super();
 		this.userId = userId;
 		this.email = email;
-		this.passsword = passsword;
+		this.password = password;
 		this.fullName = fullName;
 		this.street = street;
 		this.city = city;
@@ -64,12 +64,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPasssword() {
-		return passsword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasssword(String passsword) {
-		this.passsword = passsword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getFullName() {
@@ -147,7 +147,7 @@ public class User {
 	//override to string
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", email=" + email + ", passsword=" + passsword + ", fullName=" + fullName
+		return "User [userId=" + userId + ", email=" + email + ", passsword=" + password + ", fullName=" + fullName
 				+ ", street=" + street + ", city=" + city + ", state=" + state + ", country=" + country + ", pincode="
 				+ pincode + ", image=" + image + ", contact=" + contact + ", addedOn=" + addedOn + "]";
 	}

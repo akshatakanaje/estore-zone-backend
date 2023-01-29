@@ -15,22 +15,22 @@ public class Admins {
 	private String email;
 	private String password;
 	private String fullName;
-	private int longType;
+	private int loginType;
 	private Date addedOn;
 	
 	//default constructor
 	public Admins() {
-		
+		super();
 	}
     
 	//parameterized constructor
-	public Admins(int adminId, String email, String password, String fullName, int longType, Date addedOn) {
+	public Admins(int adminId, String email, String password, String fullName, int loginType, Date addedOn) {
 		super();
 		this.adminId = adminId;
 		this.email = email;
 		this.password = password;
 		this.fullName = fullName;
-		this.longType = longType;
+		this.loginType = loginType;
 		this.addedOn = addedOn;
 	}
     
@@ -67,12 +67,12 @@ public class Admins {
 		this.fullName = fullName;
 	}
 
-	public int getLongType() {
-		return longType;
+	public int getLoginType() {
+		return loginType;
 	}
 
-	public void setLongType(int longType) {
-		this.longType = longType;
+	public void setLoginType(int loginType) {
+		this.loginType = loginType;
 	}
 
 	public Date getAddedOn() {
@@ -88,7 +88,10 @@ public class Admins {
 	@Override
 	public String toString() {
 		return "Admins [adminId=" + adminId + ", email=" + email + ", password=" + password + ", fullName=" + fullName
-				+ ", longType=" + longType + ", addedOn=" + addedOn + "]";
-	}	
+				+ ", loginType=" + loginType + ", addedOn=" + addedOn + "]";
+	}
+
+	
+
 
 }
