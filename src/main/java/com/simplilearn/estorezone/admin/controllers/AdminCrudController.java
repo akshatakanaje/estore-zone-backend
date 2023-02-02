@@ -52,13 +52,13 @@ public class AdminCrudController extends HttpServlet{
 		}
 	}
 	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		            //doPost -- send the data to the server(write)
 		Response responseDto = new Response();
 		try {
 			//map admin object fields with request parameter
-			Admins admin = new Admins();
-		    
+			Admins admin = new Admins();		    
 			admin.setEmail(request.getParameter("email"));
 			admin.setPassword(request.getParameter("password"));
 			admin.setFullName(request.getParameter("fullName"));

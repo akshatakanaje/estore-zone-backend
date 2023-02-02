@@ -9,30 +9,134 @@ import com.simplilearn.estorezone.admin.model.Users;
 import com.simplilearn.estorezone.utility.DB;
 
 public class UsersDAO implements DAO<Users>{
+	
+	DB db  = new DB();
 
 	public List<Users> getAll() {
+		db.init();
+		List<Users> usersList = new ArrayList<Users>(); //we need to get list of users		
+		Users user = new Users();
+		try {
+			String sql = "select * from users";
+			ResultSet res = db.executeQuery(sql);
+			while (res.next()) {
+				//set or map result set to object
+				user.setUserId(res.getInt("userId"));
+				user.setEmail(res.getString("email"));
+				user.setPassword(res.getString("password"));
+				user.setFullName(res.getString("fullName"));
+				user.setStreet(res.getString("street"));
+				user.setCity(res.getString("city"));
+				user.setState(res.getString("state"));
+				user.setCountry(res.getString("country"));
+				user.setPincode(res.getInt("pincode"));
+				user.setImage(res.getString("image"));
+				user.setContact(res.getLong("contact"));
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				user.setAddedOn(format.parse(res.getString("addedOn")));    
+				
+				usersList.add(user);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Something went wrong :: " + e.getMessage());
+		} finally {
+			db.destroy();
+		}
 		
-		return null;
+		return usersList;
 	}
 
 	public Users getOne(long id) {
+		db.init();
+		Users user = new Users();
+		try {
+			String sql = "select * from users where userId = " + id;
+			ResultSet res = db.executeQuery(sql);
+			if (res.next()) {
+				//set or map result set to object
+				user.setUserId(res.getInt("userId"));
+				user.setEmail(res.getString("email"));
+				user.setPassword(res.getString("password"));
+				user.setFullName(res.getString("fullName"));
+				user.setStreet(res.getString("street"));
+				user.setCity(res.getString("city"));
+				user.setState(res.getString("state"));
+				user.setCountry(res.getString("country"));
+				user.setPincode(res.getInt("pincode"));
+				user.setImage(res.getString("image"));
+				user.setContact(res.getLong("contact"));
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				user.setAddedOn(format.parse(res.getString("addedon")));
+			}
+		} catch (Exception e) {
+			System.out.println("Something went wrong: " + e);
+		}
 		
-		return null;
+		return  user;
 	}
 
 	public int save(Users obj) {
+		db.init();
+		int rowsAffected = 0;
+		try {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String addedOnDate = format.format(obj.getAddedOn());
+			String sql = String.format(
+					"insert into users values(null, '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, '%s', %d, '%s')",
+					obj.getEmail(), obj.getPassword(), obj.getFullName(), obj.getStreet(), obj.getCity(),
+					obj.getState(), obj.getCountry(), obj.getPincode(), obj.getImage(), obj.getContact(), addedOnDate);
+			    //%s -- string, %d -- int
+			
+			rowsAffected = db.executeUpdate(sql);
+			String message = ( rowsAffected> 0) ? "User saved successfully" : "Unable to save user";
+			System.out.println(message);
+		} catch (Exception e) {
+			System.out.println("Exception message is " + e.getMessage());
+		}
 		
-		return 0;
+		return  rowsAffected;
 	}
 
 	public int update(Users obj) {
+		db.init();
+		int rowsAffected = 0;
+		try {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String addedOnDate = format.format(obj.getAddedOn());
+			String sql = String.format(
+					"update users set email='%s', password='%s', fullName='%s', street='%s', city='%s', state='%s', country='%s', pincode='%s', image='%s', contact='%d', addedonDate='%s' where userId=%d",
+					obj.getEmail(), obj.getPassword(), obj.getFullName(), obj.getStreet(), obj.getCity(),
+					obj.getState(), obj.getCountry(), obj.getPincode(), obj.getImage(), obj.getContact(), addedOnDate,
+					obj.getUserId()
+
+			);
+			
+			rowsAffected = db.executeUpdate(sql);
+			String message = ( rowsAffected > 0) ? "User upadted successfully" : "Unable to update user";
+			System.out.println(message);
+
+		} catch (Exception e) {
+			System.out.println("Exception message is " + e.getMessage());
+		}
 		
-		return 0;
+		return rowsAffected;
 	}
 
 	public int delete(long id) {
+		db.init();
+		int rowsAffected = 0;
+		try {
+			String sql = "delete from users where userId = " + id;
+			rowsAffected = db.executeUpdate(sql);
+			String message = (rowsAffected > 0) ? "User deleted successfully" : "Unable to delete user";
+			System.out.println(message);
+		} catch (Exception e) {
+			System.out.println("Exception is: " + e);
+		}
 		
-		return 0;
+		return rowsAffected;
 	}
 
 	
